@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Spring Boot and Thymeleaf - Thymeleaf Layout Dialect</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Webflix - Streaming Media Theme - Homepage v1</title>
+    <link rel="apple-touch-icon-precomposed" href="/resources/img/apple-touch-icon.png"/>
+    <!--     Include UIKit CSS   -->
+    <link rel="stylesheet" href="/resources/css/uikit.min.css"/>
+    <!--     Theme CSS   -->
+    <link rel="stylesheet" href="/resources/css/theme.css"/>
+
+</head>
+<body style="background-color:#191818;">
+<header th:replace="fragments/header :: header">
+    <p>This is default header area for default layout</p>
+</header>
+<section id="content" layout:fragment="content">
+    <p>This is default main content with default layout</p>
+</section>
+<footer th:replace="fragments/footer :: footer">
+    <p>This is default footer area for default layout</p>
+</footer>
+</body>
+</html>

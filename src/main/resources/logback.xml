@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <property name="LOGS_ABSOLUTE_PATH" value="C:/apache-tomcat-8.0.35/log" />
+    <timestamp key="byTime" datePattern="yyyyMMdd'T'HH"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_ABSOLUTE_PATH}/mei.'%d{yyyy-MM-dd}'.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_ABSOLUTE_PATH}/mei.'%d{yyyy-MM-dd}'.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="org.springframework" level="info" />
+    <logger name="org.springframework.security" level="info" />
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+
+    <!-- 3rdparty Loggers -->
+    <logger name="org.springframework.core">
+        <level value="error" />
+    </logger>
+
+    <logger name="org.springframework.beans">
+        <level value="error" />
+    </logger>
+
+    <logger name="org.springframework.context">
+        <level value="error" />
+    </logger>
+
+    <logger name="org.springframework.web">
+        <level value="error" />
+    </logger>
+
+    <logger name="org.hibernate.type">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.hibernate.SQL">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+  </configuration>

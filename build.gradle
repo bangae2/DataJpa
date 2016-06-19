@@ -1,0 +1,52 @@
+group 'DataJapEx'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'org.springframework', name: 'spring-context', version: '4.3.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-core', version: '4.3.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.0.RELEASE'
+
+    /* spring security dependencies */
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.1.0.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.1.0.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.1.0.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '4.1.0.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-crypto', version: '4.1.0.RELEASE'
+
+
+    /* web config dependencies */
+//    compile group: 'org.apache.tiles', name: 'tiles-extras', version: '3.0.5'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    compile group: 'taglibs', name: 'standard', version: '1.1.2'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    compile group: 'org.thymeleaf', name: 'thymeleaf', version: '2.1.2.RELEASE'
+    compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version: '2.1.2.RELEASE'
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '2.1.2.RELEASE'
+    compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '1.4.0'
+
+    /* logging dependencies */
+    compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.21'
+    compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
+
+    /* Database Dependencies */
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.38'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.10.1.RELEASE'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.1.0.Final'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+    compile group: 'com.oracle', name:'ojdbc6', version: '11.2.0.3'
+
+}
+
+
