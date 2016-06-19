@@ -34,4 +34,9 @@ public class UsersDaoImpl implements UsersDao {
     public UsersEntity loadUserByUsername(String username) {
         return this.usersRepository.findOne(username);
     }
+
+    @Override
+    public void resetPassword(String email, String password) {
+        this.usersRepository.resetPassword(email, password);
+    }
 }

@@ -1,20 +1,29 @@
 package com.springapp.config.webconfig;
 
+import com.springapp.config.interceptor.SecurityInterceptor;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.UrlTemplateResolver;
+
+import java.util.Properties;
 
 
 /**
@@ -23,7 +32,11 @@ import org.thymeleaf.templateresolver.UrlTemplateResolver;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = {"com.springapp"})
+@PropertySource("classpath:application.properties")
 public class WebMvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
+
+    @Autowired
+    private Environment env;
 
     private ApplicationContext applicationContext;
 
@@ -103,6 +116,30 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter implements Application
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setOrder(1);
         return viewResolver;
+    }
+
+    @Bean
+    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
+        RequestMappingHandlerMapping mapping = new RequestMappingHandlerMapping();
+        mapping.setInterceptors(new Object[]{new SecurityInterceptor()});
+        return mapping;
+    }
+
+    @Bean
+    public JavaMailSenderImpl mailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost(env.getProperty("mail.host"));
+        mailSender.setPort(Integer.parseInt(env.getProperty("mail.port")));
+        mailSender.setUsername(env.getProperty("mail.username"));
+        mailSender.setPassword(env.getProperty("mail.password"));
+        mailSender.setProtocol(env.getProperty("mail.protocol"));
+        Properties javaMailProperties = new Properties();
+        javaMailProperties.setProperty("mail.smtp.auth", env.getProperty("mail.smtp.auth"));
+        javaMailProperties.setProperty("mail.smtp.ssl.trust", env.getProperty("mail.smtp.ssl.trust"));
+        javaMailProperties.setProperty("mail.smtp.starttls.enable", env.getProperty("mail.smtp.starttls.enable"));
+        mailSender.setJavaMailProperties(javaMailProperties);
+        return mailSender;
+
     }
 
 }

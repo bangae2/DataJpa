@@ -46,7 +46,7 @@
     </logger>
 
     <logger name="org.hibernate.type">
-        <level value="DEBUG"/>
+        <level value="TRACE"/>
         <appender-ref ref="STDOUT"/>
     </logger>
 

@@ -5,6 +5,7 @@ import com.springapp.users.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -23,6 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.security.Principal;
 
@@ -31,20 +33,23 @@ import java.security.Principal;
  */
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = {"com.springapp.users"})
+@ComponentScan(basePackages = {"com.springapp.users", "com.springapp.config"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UsersService usersService;
+    @Autowired
+    private DataSourceConfig dataSource;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(usersService);
+        auth.userDetailsService(usersService).passwordEncoder(new ShaPasswordEncoder());
 //        auth.inMemoryAuthentication().withUser("aa").password("aa").roles("ROLE_ADMIN");
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**/*").antMatchers("/signup");
+        web.ignoring().antMatchers("/resources/**/*").antMatchers("/signup").antMatchers("/forgotPassword")
+        .antMatchers("/findPassword");
     }
 
     @Override

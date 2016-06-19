@@ -16,6 +16,10 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-core', version: '4.3.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.0.RELEASE'
+    compile group: 'org.springframework.integration', name: 'spring-integration-mail', version: '4.3.0.RELEASE'
+
+
+
 
     /* spring security dependencies */
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.1.0.RELEASE'
@@ -46,6 +50,10 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.1.0.Final'
     compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
     compile group: 'com.oracle', name:'ojdbc6', version: '11.2.0.3'
+
+
+    /*etc*/
+    compile group: 'javax.mail', name: 'mail', version: '1.4.7'
 
 }
 

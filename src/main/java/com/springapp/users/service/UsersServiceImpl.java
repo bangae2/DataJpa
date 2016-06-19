@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  * Created by bangae11 on 2016-06-14.
  */
 @Service
-public class UsersServiceImpl implements UsersService {
+public class UsersServiceImpl implements UsersService,Serializable {
 
     @Autowired
     private UsersDao usersDao;

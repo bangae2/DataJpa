@@ -11,4 +11,5 @@ public interface UsersDao {
     public void usersRegister(UsersEntity usersEntity);
     public void autoAuth(AuthEntity authEntity);
     public UsersEntity loadUserByUsername(String username);
+    public void resetPassword(String email, String password);
 }
