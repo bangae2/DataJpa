@@ -3,6 +3,8 @@ package com.springapp.common.service;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
+
 /**
  * Created by bangae11 on 2016-06-19.
  */
@@ -53,4 +55,6 @@ public class UtilServiceImpl implements UtilService {
         return en.encodePassword(pw, null);
 
     }
+
+
 }

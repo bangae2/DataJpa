@@ -1217,8 +1217,14 @@ html .uk-nav.uk-nav-offcanvas>li.uk-active>a {
 .uk-navbar-secondary .uk-nav-navbar>li>a:focus, .uk-nav-navbar>li>a:hover {
     background: #339ae7;
     }
-.tm-bg-cover {width: 100%; height: 100%;}
 
+@media(min-width:200px) {
+  .tm-bg-cover {width: 100%; height: 100%;padding-top:70px;}
+}
+
+@media(min-width:1220px) {
+  .tm-bg-cover {width: 100%; height: 100%;}
+}
 
 #tm-topbar {
   background: transparent;
@@ -1326,7 +1332,7 @@ border-bottom: 4px solid transparent;
 
 
 #tm-media-section .media-cover {
-margin-top: -85px;
+margin-top: 5px;
 
 }
 
@@ -1336,8 +1342,8 @@ border:0;
 }
 
 
-#tm-media-section .media-container {padding-top: 81px;
-    padding-bottom: 130px;}
+#tm-media-section .media-container {padding-top: 50px;
+    padding-bottom: 100px;}
 
 
 

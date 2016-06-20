@@ -4753,14 +4753,28 @@ a.uk-thumbnail:focus {
 .uk-overlay > :first-child {
   margin-bottom: 0;
 }
-.uk-overlay-panel {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  color: #ffffff;
+
+@media (min-width: 200px)  {
+  .uk-overlay-panel {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    color: #ffffff;
+  }
+}
+
+@media(min-width:768px) {
+  .uk-overlay-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    color: #ffffff;
+  }
 }
 .uk-overlay-panel > :last-child,
 .uk-overlay-panel.uk-flex > * > :last-child {

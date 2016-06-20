@@ -48,8 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**/*").antMatchers("/signup").antMatchers("/forgotPassword")
-        .antMatchers("/findPassword");
+        web.ignoring().antMatchers("/resources/**/*").antMatchers("/signup").antMatchers("/forgotPassword").antMatchers("/attach/**/thumbnail/*")
+        .antMatchers("/findPassword").antMatchers("/imgView");
     }
 
     @Override
